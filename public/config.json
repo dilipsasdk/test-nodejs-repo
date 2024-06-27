@@ -1,0 +1,63 @@
+{
+  "workflowApiVersion": "1.1",
+  "name": "Custom Activity Name",
+  "description": "Custom Activity Description",
+  "metaData": {
+    "icon": "images/icon.svg",
+    "category": "message"
+  },
+  "type": "REST",
+  "lang": {
+      "en-US": {
+        "name": "Cheap Flight Rate",
+        "description": "Get the cheapest flight rate for customer"
+      }
+    },
+    "arguments": {
+        "execute": {
+            "inArguments": [ {
+            "name": "fromStation",
+            "dataType": "String",
+            "description": "Departure station (passed from Journey Builder)"
+          },
+          {
+            "name": "toDestination",
+            "dataType": "String",
+            "description": "Arrival destination (passed from Journey Builder)"
+          }],
+            "outArguments": [
+                {
+            "name": "lowestPrice",
+            "dataType": "Number",
+            "description": "Lowest price found in API response array"
+          }
+            ],
+            "url": "https://cheapflight.com/cheapflight",
+            "verb": "GET",
+            "body": "",
+            "header": "",
+            "format": "json",
+            "useJwt": false,
+            "timeout": 10000
+        }
+        },
+        "configurationArguments": {
+            "applicationExtensionKey": "app-key",
+            "save": {
+                "url": "https://cheapflight.com/cheapflight/save",
+                "verb": "POST",
+                "useJwt": false
+            },
+            "publish": {
+                "url": "https://cheapflight.com/cheapflight/publish",
+                "verb": "POST",
+                "useJwt": false
+            },
+            "validate": {
+                "url": "https://cheapflight.com/cheapflight/validate",
+                "verb": "POST",
+                "useJwt": false
+            }
+        }       
+        
+}
