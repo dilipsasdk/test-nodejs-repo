@@ -9,7 +9,7 @@ var http = require('https');
 
 exports.logExecuteData = [];
 
-function logData(req) {
+function logData(req, logtype) {
     exports.logExecuteData.push({
         body: req.body,
         headers: req.headers,
@@ -29,7 +29,7 @@ function logData(req) {
         secure: req.secure,
         originalUrl: req.originalUrl
     });
-    console.log("body: " + util.inspect(req.body));
+    console.log("body: " + logtype + util.inspect(req.body));
     console.log("headers: " + req.headers);
     console.log("trailers: " + req.trailers);
     console.log("method: " + req.method);
@@ -54,7 +54,7 @@ function logData(req) {
 exports.edit = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
-    logData(req);
+    logData(req, 'edit');
     res.send(200, 'Edit');
 };
 
@@ -64,7 +64,7 @@ exports.edit = function (req, res) {
 exports.save = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
-    logData(req);
+    logData(req, 'save');
     res.send(200, 'Save');
 };
 
@@ -72,6 +72,7 @@ exports.save = function (req, res) {
  * POST Handler for /execute/ route of Activity.
  */
 exports.execute = function (req, res) {
+    logData(req, 'execute1');
 
     // example on how to decode JWT
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
@@ -83,11 +84,11 @@ exports.execute = function (req, res) {
         }
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-            
+
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
-            
-            logData(req);
+
+            logData(req, 'execute2');
             res.send(200, 'Execute');
         } else {
             console.error('inArguments invalid.');
@@ -103,7 +104,7 @@ exports.execute = function (req, res) {
 exports.publish = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
-    logData(req);
+    logData(req, 'publish');
     res.send(200, 'Publish');
 };
 
@@ -113,6 +114,6 @@ exports.publish = function (req, res) {
 exports.validate = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
-    logData(req);
+    logData(req, 'validate');
     res.send(200, 'Validate');
 };
