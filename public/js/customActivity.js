@@ -70,6 +70,9 @@ define([
             });
         });
 
+        connection.trigger('updateActivity', payload);
+
+
         connection.trigger('updateButton', {
             button: 'next',
             text: 'done',
