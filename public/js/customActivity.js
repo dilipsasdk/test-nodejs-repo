@@ -70,7 +70,7 @@ define([
             });
         });
 
-        connection.trigger('updateActivity', payload);
+        // connection.trigger('updateActivity', payload);
 
 
         connection.trigger('updateButton', {
