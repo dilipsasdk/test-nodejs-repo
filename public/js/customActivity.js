@@ -90,6 +90,7 @@ define([
     }
 
     function save() {
+        alert('test')
         console.log('test save called');
         var postcardURLValue = $('#postcard-url').val();
         var postcardTextValue = $('#postcard-text').val();
