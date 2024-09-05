@@ -99,6 +99,13 @@ define([
             "tokens": authTokens
         }];
 
+        payload['arguments'].execute.outArguments = [
+            { "journeyStatus": "test fare" }
+        ];
+
+        alert('payload out sent')
+
+
         payload['metaData'].isConfigured = true;
 
         console.log(payload);

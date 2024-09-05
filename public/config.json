@@ -16,7 +16,13 @@
     "arguments": {
         "execute": {
            "inArguments":[],
-          "outArguments": [],
+          "outArguments": [
+        {
+          "fare": {
+            "dataType": "Text"
+          }
+        }
+          ],
           "url": "https://test-nodejs-project.azurewebsites.net/journeybuilder/execute",
            "verb": "POST",
             "body": "",
