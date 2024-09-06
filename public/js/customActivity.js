@@ -100,7 +100,7 @@ define([
         }];
 
         payload['arguments'].execute.outArguments = [
-            { "journeyStatus": "test fare" }
+            { "fare": "test fare" }
         ];
 
         alert('payload out sent')
