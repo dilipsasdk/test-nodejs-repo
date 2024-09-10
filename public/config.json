@@ -16,13 +16,7 @@
     "arguments": {
         "execute": {
            "inArguments":[],
-          "outArguments": [
-        {
-          "fare": {
-            "dataType": "Text"
-          }
-        }
-          ],
+          "outArguments": [],
           "url": "https://test-nodejs-project.azurewebsites.net/journeybuilder/execute",
            "verb": "POST",
             "body": "",
@@ -68,7 +62,15 @@
         "arguments": {
             "execute": {
                 "inArguments": [],
-                "outArguments": []
+                "outArguments": [
+                  {
+          "fare": {
+            "dataType": "Text",
+            "direction": "out",
+            "access": "visible"
+          }
+        }
+                ]
             }
         }
     }
