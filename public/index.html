@@ -1,44 +1,34 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title></title>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="vendor/salesforce-lightning-design-system/styles/salesforce-lightning-design-system.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <script type="text/javascript" src="//code.jquery.com/git/jquery-git.min.js"></script>
-    <script type="text/javascript" src="js/require.js"></script>
-    <script type="text/javascript">
-        (function () {
-            var config = {
-                baseUrl: 'js'
-            };
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Activity Config</title>
+    <script src="postmonger.js"></script>
+    <script>
+        const connection = new Postmonger.Session();
+        
+        connection.on('initActivity', function(data) {
+            console.log('Init activity:', data);
+        });
 
-            var dependencies = [
-                'customActivity'
-            ];
-
-            require(config, dependencies);
-        })();
+        function save() {
+            connection.trigger('updateActivity', {
+                name: 'My Custom Activity',
+                arguments: {
+                    execute: {
+                        inArguments: [{
+                            "someArgument": "value"
+                        }],
+                        url: "https://your-application.com/execute"
+                    }
+                }
+            });
+        }
     </script>
 </head>
-
 <body>
-    <div id="step1" class="step">
-        <div class="slds-grid">
-
-            <main class="slds-col slds-size--1-of-3 slds-p-horizontal--small">
-              <h1>Welcome to your activity 2!</h1>
-            <input type="text" id="fromStation" placeholder="From Station" />
-            <input type="text" id="toStation" placeholder="To Station" />
-<button id="nextButton">Next</button>
-            </main>
-
-        </div>
-
-    </div>
+    <h1>Configure Your Activity</h1>
+    <button onclick="save()">Save</button>
 </body>
-
 </html>

@@ -1,0 +1,44 @@
+{
+  "workflowApiVersion": "1.1",
+  "metaData": {
+    "icon": "images/icon.png",
+    "category": "message"
+  },
+  "type": "REST",
+  "lang": {
+    "en-US": {
+      "name": "Custom Node.js Activity",
+      "description": "A sample custom activity using Node.js"
+    }
+  },
+  "arguments": {
+    "execute": {
+      "inArguments": [],
+      "outArguments": [],
+      "url": "https://test-nodejs-project.azurewebsites.net/journeybuilder/execute",
+      "verb": "POST",
+      "body": "",
+      "header": "",
+      "format": "json",
+      "useJwt": false
+    }
+  },
+  "configurationArguments": {
+    "publish": {
+      "url": "https://test-nodejs-project.azurewebsites.net/journeybuilder/publish"
+    },
+    "validate": {
+      "url": "https://test-nodejs-project.azurewebsites.net/journeybuilder/validate"
+    },
+    "stop": {
+      "url": "https://test-nodejs-project.azurewebsites.net/journeybuilder/stop"
+    }
+  },
+  "userInterfaces": {
+    "configModal": {
+      "height": 600,
+      "width": 800,
+      "url": "https://test-nodejs-project.azurewebsites.net/journeybuilder/"
+    }
+  }
+}
