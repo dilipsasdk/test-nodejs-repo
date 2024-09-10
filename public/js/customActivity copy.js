@@ -59,9 +59,11 @@ define([
             payload['arguments'].execute.inArguments.length > 0
         );
 
+        console.log('hasInArguments', hasInArguments);
+
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
-        console.log(inArguments);
+        console.log('inArguments', inArguments);
 
         $.each(inArguments, function (index, inArgument) {
             $.each(inArgument, function (key, val) {
@@ -69,6 +71,9 @@ define([
 
             });
         });
+
+        // connection.trigger('updateActivity', payload);
+
 
         connection.trigger('updateButton', {
             button: 'next',
@@ -87,12 +92,21 @@ define([
     }
 
     function save() {
+        alert('test')
+        console.log('test save called');
         var postcardURLValue = $('#postcard-url').val();
         var postcardTextValue = $('#postcard-text').val();
 
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens
         }];
+
+        payload['arguments'].execute.outArguments = [
+            { "fare": "test fare" }
+        ];
+
+        alert('payload out sent')
+
 
         payload['metaData'].isConfigured = true;
 

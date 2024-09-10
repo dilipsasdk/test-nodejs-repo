@@ -62,7 +62,15 @@
         "arguments": {
             "execute": {
                 "inArguments": [],
-                "outArguments": []
+                "outArguments": [
+                  {
+          "fare": {
+            "dataType": "Text",
+            "direction": "out",
+              "access": "visible"
+          }
+        }
+                ]
             }
         }
     }
