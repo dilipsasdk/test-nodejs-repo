@@ -7,8 +7,9 @@
   "type": "REST",
   "lang": {
     "en-US": {
-      "name": "Custom Node.js Activity",
-      "description": "A sample custom activity using Node.js"
+      "name": "Template",
+          "description": "A Template for a custom Journey Builder activity",
+          "step1Label": "Configure Activity"
     }
   },
   "arguments": {
